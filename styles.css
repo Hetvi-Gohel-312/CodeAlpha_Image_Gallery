@@ -1,0 +1,218 @@
+/* Body Background */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #4e5d6c, #2c3e50);
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 40px;
+  position: relative;
+  margin: 40px 0;
+}
+
+h1::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 3px;
+  background-color: crimson;
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 100px;
+  }
+  50% {
+    width: 250px;
+  }
+  100% {
+    width: 100px;
+  }
+}
+
+.top-content {
+  background-color: #D6B3E1;
+  width: 90%;
+  margin: 0 auto 20px auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px pink;
+}
+
+h3 {
+  height: 100%;
+  background-color: bisque;
+  line-height: 60px;
+  padding: 0 50px;
+}
+
+label {
+  display: inline-block;
+  height: 100%;
+  margin: 0 20px;
+  line-height: 60px;
+  font-size: 22px;
+  color: #3e5464;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+label:hover {
+  color: #8b008b;
+}
+
+.photo-gallery {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.pic {
+  position: relative; /* Fixed this to ensure correct grid layout */
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px lightgray;
+  cursor: pointer;
+}
+
+/* Adjust for screens smaller than 768px (mobile) */
+@media (max-width: 768px) {
+  .pic {
+    height: 200px; /* Smaller height for mobile devices */
+  }
+}
+
+/* Adjust for screens larger than 768px (tablet/desktop) */
+@media (min-width: 769px) {
+  .pic {
+    height: 350px; /* Default height for larger screens */
+  }
+}
+.pic img {
+  width: 100%;
+  height: 100%;
+}
+
+.pic::before {
+  content: "PHOTO GALLERY";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: -100px;
+  opacity: 0;
+  transition: .3s;
+  transition-delay: .2s;
+  z-index: 1;
+}
+
+.pic::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: .3s;
+}
+
+.pic:hover::after {
+  height: 100%;
+}
+
+.pic:hover::before {
+  margin-top: 0;
+  opacity: 1;
+}
+#check1:checked ~ .container .photo-gallery .pic{
+  transform: scale(1);
+  opacity: 1;
+  position: relative;
+  transition: .5s;
+}
+#check2:checked ~ .container .photo-gallery .men{
+  transform: scale(1);
+  opacity: 1;
+  position: relative;
+  transition: .5s;
+}
+#check2:checked ~ .container .photo-gallery .women,
+#check2:checked ~ .container .photo-gallery .footwear,
+#check2:checked ~ .container .photo-gallery .accessories{
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: .5s;
+}
+#check3:checked ~ .container .photo-gallery .women{
+  transform: scale(1);
+  opacity: 1;
+  position: relative;
+  transition: .5s;
+}
+#check3:checked ~ .container .photo-gallery .men,
+#check3:checked ~ .container .photo-gallery .footwear,
+#check3:checked ~ .container .photo-gallery .accessories{
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: .5s;
+}
+#check4:checked ~ .container .photo-gallery .accessories{
+  transform: scale(1);
+  opacity: 1;
+  position: relative;
+  transition: .5s;
+}
+#check4:checked ~ .container .photo-gallery .women,
+#check4:checked ~ .container .photo-gallery .men,
+#check4:checked ~ .container .photo-gallery .footwear{
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: .5s;
+}
+#check5:checked ~ .container .photo-gallery .footwear{
+  transform: scale(1);
+  opacity: 1;
+  position: relative;
+  transition: .5s;
+}
+#check5:checked ~ .container .photo-gallery .women,
+#check5:checked ~ .container .photo-gallery .men,
+#check5:checked ~ .container .photo-gallery .accessories{
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: .5s;
+}
+
